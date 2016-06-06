@@ -1,5 +1,4 @@
-﻿using System;
-using System.Timers;
+﻿using System.Timers;
 using Moq;
 using NUnit.Framework;
 
@@ -43,7 +42,7 @@ namespace Lycothrope.Tests
         [Test]
         public void DisposingTimerMakesNotEnabled()
         {
-            Timer timer = new Timer(1000);
+            var timer = new Timer(1000);
             timer.Start();
             timer.Stop();
             timer.Dispose();
@@ -54,12 +53,23 @@ namespace Lycothrope.Tests
         [Test]
         public void WriteOnTimerExpired()
         {
-            Mock<IScheduler> scheduler = new Mock<IScheduler>();
-            Mock<IWriter> writer = new Mock<IWriter>();
+            var scheduler = new Mock<IScheduler>();
+            var writer = new Mock<IWriter>();
             new Implementation(scheduler.Object, writer.Object);
 
-            scheduler.Raise(s => s.TimerExpires += null, EventArgs.Empty);
-            writer.Verify(w => w.Write());
+            scheduler.Raise(s => s.TimerExpired += null, new LycothropeEventArgs {Message = "timer expired"});
+            writer.Verify(w => w.Write("timer expired"));
+        }
+
+        [Test]
+        public void WriteOnTomatoStarted()
+        {
+            var scheduler = new Mock<IScheduler>();
+            var writer = new Mock<IWriter>();
+            new Implementation(scheduler.Object, writer.Object);
+
+            scheduler.Raise(s => s.TomatoStarted += null, new LycothropeEventArgs { Message = "tomato started" });
+            writer.Verify(w => w.Write("tomato started"));
         }
     }
 }

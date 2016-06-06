@@ -8,9 +8,9 @@ namespace Lycothrope
         {
         }
 
-        public void Write()
+        public void Write(string message)
         {
-            Console.WriteLine("Invoked.");
+            Console.WriteLine(message);
         }
     }
 }

@@ -12,12 +12,18 @@ namespace Lycothrope.Tests
             _scheduler = s;
             _writer = w;
 
-            _scheduler.TimerExpires += TimerExpires;
+            _scheduler.TimerExpired += OnTimerExpired;
+            _scheduler.TomatoStarted += OnTomatoStarted;
         }
 
-        private void TimerExpires(object sender, EventArgs e)
+        private void OnTomatoStarted(object o, LycothropeEventArgs e)
         {
-            _writer.Write();
+            _writer.Write(e.Message);
+        }
+
+        private void OnTimerExpired(object sender, LycothropeEventArgs e)
+        {
+            _writer.Write(e.Message);
         }
     }
 }
