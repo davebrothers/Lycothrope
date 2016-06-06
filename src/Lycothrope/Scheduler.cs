@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Timers;
 
 namespace Lycothrope
@@ -9,20 +10,21 @@ namespace Lycothrope
     {
         public event TomatoEventHandler TimerExpired;
         public event TomatoEventHandler TomatoStarted;
-        private Timer _timer;
+        private readonly Timer _timer;
+        private readonly Tomato _tomato;
         private int _timerElapsedCount;
 
         public Scheduler(Tomato tomato)
         {
-            GetTomato = tomato;
+            _tomato = tomato;
             _timer = new Timer(1000);
             _timer.Elapsed += (s, e) =>
             {
-                TimerElapses();
+                TimerElapsed();
             };
         }
 
-        public Tomato GetTomato { get; }
+        public Tomato GetTomato => _tomato;
 
         public void BeginPomodoro()
         {
@@ -50,14 +52,14 @@ namespace Lycothrope
             handler?.Invoke(this, e);
         }
 
-        private void TimerElapses()
+        private void TimerElapsed()
         {
             _timerElapsedCount++;
-            if (_timerElapsedCount >= GetTomato.GetLifespan() * 60)
+            if (_timerElapsedCount >= _tomato.GetLifespan() * 60)
                 OnTimerExpired(new LycothropeEventArgs {Message = "Timer expired."});
         }
 
-        private bool TimerIsAvailable()
+        public bool TimerIsAvailable()
         {
             return !_timer.Enabled;
         }

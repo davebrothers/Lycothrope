@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System;
+using System.Timers;
 using Moq;
 using NUnit.Framework;
 
@@ -70,6 +71,19 @@ namespace Lycothrope.Tests
 
             scheduler.Raise(s => s.TomatoStarted += null, new LycothropeEventArgs { Message = "tomato started" });
             writer.Verify(w => w.Write("tomato started"));
+        }
+
+        [Test]
+        public void SchedulerDoesNotAllowMultipleSimultaneousTomatoes()
+        {
+            // todo: should probably do something with this besides throw an ex.
+            var scheduler = new Scheduler(new Tomato());
+            var writer = new Mock<IWriter>();
+            new Implementation(scheduler, writer.Object);
+
+            scheduler.BeginPomodoro();
+            
+            Assert.Throws<Exception>(() => scheduler.BeginPomodoro());
         }
     }
 }
