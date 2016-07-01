@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Timers;
 
 namespace Lycothrope
@@ -10,18 +11,15 @@ namespace Lycothrope
     {
         public event TomatoEventHandler TimerExpired;
         public event TomatoEventHandler TomatoStarted;
-        private readonly Timer _timer;
+        public event TomatoEventHandler TomatoCanceled;
+        public Timer Timer { get; set; }
         private readonly Tomato _tomato;
         private int _timerElapsedCount;
 
         public Scheduler(Tomato tomato)
         {
             _tomato = tomato;
-            _timer = new Timer(1000);
-            _timer.Elapsed += (s, e) =>
-            {
-                TimerElapsed();
-            };
+            InitTimer();
         }
 
         public Tomato GetTomato => _tomato;
@@ -29,9 +27,14 @@ namespace Lycothrope
         public void BeginPomodoro()
         {
             if (!TimerIsAvailable())
-                throw new Exception("Timer is not available.");
-            _timer.Start();
+                throw new Exception("Timer is not available."); //todo: restart timer (?)
+            Timer.Start();
             OnTomatoStarted(new LycothropeEventArgs {Message = "begin pomodoro"});
+        }
+
+        public void StopPomodoro()
+        {
+            Timer.Stop();
         }
 
         public void OnTomatoCanceled(object s, EventArgs e)
@@ -41,6 +44,7 @@ namespace Lycothrope
 
         protected virtual void OnTimerExpired(LycothropeEventArgs e)
         {
+            Timer.Stop();
             var handler = TimerExpired;
             handler?.Invoke(this, e);
         }
@@ -52,16 +56,32 @@ namespace Lycothrope
             handler?.Invoke(this, e);
         }
 
-        private void TimerElapsed()
+        private void OnTimerElapsed()
         {
             _timerElapsedCount++;
+
             if (_timerElapsedCount >= _tomato.GetLifespan() * 60)
                 OnTimerExpired(new LycothropeEventArgs {Message = "Timer expired."});
         }
 
         public bool TimerIsAvailable()
         {
-            return !_timer.Enabled;
+            return !Timer.Enabled;
+        }
+
+        private void InitTimer()
+        {
+            Timer = new Timer(1000);
+            Timer.Elapsed += (s, e) =>
+            {
+                OnTimerElapsed();
+            };
+        }
+
+        private void Reset()
+        {
+            _timerElapsedCount = 0;
+
         }
     }
 }

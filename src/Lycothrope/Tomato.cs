@@ -35,7 +35,7 @@
                 case (Cultivar.LongBreak):
                     return 15;
                 default:
-                    return 25;
+                    return 1; //todo: 25
             }
         }
     }
