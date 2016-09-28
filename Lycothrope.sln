@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lycothrope.Tests", "tests\L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lycothrope.Forms", "src\Lycothrope.Forms\Lycothrope.Forms.csproj", "{7F769938-1775-4970-99BE-277B5602F7FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lycothrope.Forms.Tests", "tests\Lycothrope.Forms.Tests\Lycothrope.Forms.Tests.csproj", "{F292601E-EE46-443E-8766-BE4279927C59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7F769938-1775-4970-99BE-277B5602F7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F769938-1775-4970-99BE-277B5602F7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F769938-1775-4970-99BE-277B5602F7FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F292601E-EE46-443E-8766-BE4279927C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F292601E-EE46-443E-8766-BE4279927C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F292601E-EE46-443E-8766-BE4279927C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F292601E-EE46-443E-8766-BE4279927C59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

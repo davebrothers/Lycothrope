@@ -6,38 +6,38 @@ using NUnit.Framework;
 namespace Lycothrope.Tests
 {
     [TestFixture]
-    public class Test
+    public class LycothropeTests
     {
         [Test]
         public void NewTomatoDefaultsToPomodoroCultivar()
         {
-            var p = new Tomato();
+            var t = new Tomato();
 
-            Assert.That(p.GetCultivar(), Is.EqualTo(Cultivar.Pomodoro));
+            Assert.That(t.Cultivar(), Is.EqualTo(Cultivar.Pomodoro));
         }
 
         [Test]
         public void PomodoroLifespanDefaultsToTwentyFiveMinutes()
         {
-            var p = new Tomato();
+            var t = new Tomato();
 
-            Assert.That(p.GetLifespan, Is.EqualTo(25));
+            Assert.That(t.Lifespan, Is.EqualTo(25));
         }
 
         [Test]
         public void ShortBreakLifespanDefaultsToFiveMinutes()
         {
-            var p = new Tomato(Cultivar.ShortBreak);
+            var t = new Tomato(Cultivar.ShortBreak);
 
-            Assert.That(p.GetLifespan, Is.EqualTo(5));
+            Assert.That(t.Lifespan, Is.EqualTo(5));
         }
 
         [Test]
         public void LongBreakLifespanDefaultsToFifteenMinutes()
         {
-            var p = new Tomato(Cultivar.LongBreak);
+            var t = new Tomato(Cultivar.LongBreak);
 
-            Assert.That(p.GetLifespan, Is.EqualTo(15));
+            Assert.That(t.Lifespan, Is.EqualTo(15));
         }
 
         [Test]

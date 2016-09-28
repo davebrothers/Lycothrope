@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Timers;
 using System.Windows.Forms;
 
 namespace Lycothrope.Forms
@@ -72,7 +71,5 @@ namespace Lycothrope.Forms
             btnLongBreak.Enabled = !btnLongBreak.Enabled;
             btnStop.Enabled = !btnStop.Enabled;
         }
-
-        
     }
 }

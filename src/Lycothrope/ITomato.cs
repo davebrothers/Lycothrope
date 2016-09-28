@@ -12,8 +12,8 @@
 
     public interface ITomato
     {
-        Cultivar GetCultivar();
-        int GetLifespan();
+        Cultivar Cultivar();
+        int Lifespan();
     }
 }
 

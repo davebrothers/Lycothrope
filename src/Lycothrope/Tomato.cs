@@ -8,31 +8,31 @@
         public Tomato(Cultivar cultivar)
         {
             _cultivar = cultivar;
-            _lifespan = GetLifespanFor(cultivar);
+            _lifespan = LifespanFor(cultivar);
         }
 
         public Tomato()
-            : this(Cultivar.Pomodoro)
+            : this(Lycothrope.Cultivar.Pomodoro)
         {
         }
 
-        public Cultivar GetCultivar()
+        public Cultivar Cultivar()
         {
             return _cultivar;
         }
 
-        public int GetLifespan()
+        public int Lifespan()
         {
             return _lifespan;
         }
 
-        private int GetLifespanFor(Cultivar cultivar)
+        private int LifespanFor(Cultivar cultivar)
         {
             switch (cultivar)
             {
-                case (Cultivar.ShortBreak):
+                case (Lycothrope.Cultivar.ShortBreak):
                     return 5;
-                case (Cultivar.LongBreak):
+                case (Lycothrope.Cultivar.LongBreak):
                     return 15;
                 default:
                     return 1; //todo: 25

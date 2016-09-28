@@ -60,7 +60,7 @@ namespace Lycothrope
         {
             _timerElapsedCount++;
 
-            if (_timerElapsedCount >= _tomato.GetLifespan() * 60)
+            if (_timerElapsedCount >= _tomato.Lifespan() * 60)
                 OnTimerExpired(new LycothropeEventArgs {Message = "Timer expired."});
         }
 
