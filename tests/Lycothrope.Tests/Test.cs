@@ -59,7 +59,7 @@ namespace Lycothrope.Tests
             new Implementation(scheduler.Object, writer.Object);
 
             scheduler.Raise(s => s.TimerExpired += null, new LycothropeEventArgs {Message = "timer expired"});
-            writer.Verify(w => w.Write("timer expired"));
+            writer.Verify(w => w.WriteToConsole("timer expired"));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace Lycothrope.Tests
             new Implementation(scheduler.Object, writer.Object);
 
             scheduler.Raise(s => s.TomatoStarted += null, new LycothropeEventArgs { Message = "tomato started" });
-            writer.Verify(w => w.Write("tomato started"));
+            writer.Verify(w => w.WriteToConsole("tomato started"));
         }
 
         [Test]

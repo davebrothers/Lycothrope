@@ -2,7 +2,7 @@
 {
 	public interface IWriter
 	{
-	    void Write(string message);
+	    void WriteToConsole(string message);
 	}
 }
 

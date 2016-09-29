@@ -26,16 +26,17 @@
             return _lifespan;
         }
 
-        private int LifespanFor(Cultivar cultivar)
+        private static int LifespanFor(Cultivar cultivar)
         {
             switch (cultivar)
             {
                 case (Lycothrope.Cultivar.ShortBreak):
-                    return 5;
+                    return Properties.Settings.Default.Pomodoro;
                 case (Lycothrope.Cultivar.LongBreak):
-                    return 15;
+                    return Properties.Settings.Default.LongBreak;
+                case Lycothrope.Cultivar.Pomodoro:
                 default:
-                    return 1; //todo: 25
+                    return Properties.Settings.Default.Pomodoro;
             }
         }
     }

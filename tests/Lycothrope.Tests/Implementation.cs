@@ -18,12 +18,12 @@ namespace Lycothrope.Tests
 
         private void OnTomatoStarted(object o, LycothropeEventArgs e)
         {
-            _writer.Write(e.Message);
+            _writer.WriteToConsole(e.Message);
         }
 
         private void OnTimerExpired(object sender, LycothropeEventArgs e)
         {
-            _writer.Write(e.Message);
+            _writer.WriteToConsole(e.Message);
         }
     }
 }

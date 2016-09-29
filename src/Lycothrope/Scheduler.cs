@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Timers;
 
 namespace Lycothrope
@@ -29,7 +27,7 @@ namespace Lycothrope
             if (!TimerIsAvailable())
                 throw new Exception("Timer is not available."); //todo: restart timer (?)
             Timer.Start();
-            OnTomatoStarted(new LycothropeEventArgs {Message = "begin pomodoro"});
+            OnTomatoStarted(new LycothropeEventArgs {Message = $"Enjoy your {_tomato.Cultivar()}"});
         }
 
         public void StopPomodoro()

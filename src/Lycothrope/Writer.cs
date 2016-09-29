@@ -8,7 +8,7 @@ namespace Lycothrope
         {
         }
 
-        public void Write(string message)
+        public void WriteToConsole(string message)
         {
             Console.WriteLine(message);
         }
