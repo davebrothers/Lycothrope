@@ -5,7 +5,6 @@ namespace Lycothrope.Forms
 {
     public partial class Lycothrope : Form
     {
-        public event TomatoEventHandler TimerReplaced;
         private Scheduler _scheduler;
         private Tomato _tomato;
         private DateTime _dateTimeTimer;
@@ -13,6 +12,7 @@ namespace Lycothrope.Forms
         public Lycothrope()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private void Lycothrope_Load(object sender, EventArgs e)
@@ -69,11 +69,16 @@ namespace Lycothrope.Forms
         private void SubscribeSchedulerEvents()
         {
             _scheduler.TomatoStarted += OnTomatoStarted;
-
+            _scheduler.TomatoCanceled += OnTomatoCanceled;
             _scheduler.TimerExpired += (n, p) =>
             {
                 MessageBox.Show(p.Message);
             };
+        }
+
+        private void OnTomatoCanceled(object o, LycothropeEventArgs e)
+        {
+            toolStripStatusLabel.Text = e.Message;
         }
 
         private void StartTimer()
@@ -105,6 +110,11 @@ namespace Lycothrope.Forms
         private void ClearTimerText()
         {
             tbTimer.Text = @"00:00";
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

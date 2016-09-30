@@ -33,6 +33,8 @@ namespace Lycothrope
         public void StopPomodoro()
         {
             Timer.Stop();
+            var handler = TomatoCanceled;
+            handler?.Invoke(this, new LycothropeEventArgs() { Message = $"Timer stopped after {_timerElapsedCount} seconds."});
         }
 
         public void OnTomatoCanceled(object s, EventArgs e)

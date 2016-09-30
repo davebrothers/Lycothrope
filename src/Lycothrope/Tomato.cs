@@ -31,13 +31,19 @@
             switch (cultivar)
             {
                 case (Lycothrope.Cultivar.ShortBreak):
-                    return Properties.Settings.Default.Pomodoro;
+                    return Properties.Settings.Default.ShortBreak;
                 case (Lycothrope.Cultivar.LongBreak):
                     return Properties.Settings.Default.LongBreak;
                 case Lycothrope.Cultivar.Pomodoro:
                 default:
                     return Properties.Settings.Default.Pomodoro;
             }
+        }
+
+        public void UpdateDefaultCultivarLifespan(Cultivar cultivar, int newLifespanInMinutes)
+        {
+            Properties.Settings.Default[cultivar.ToString()] = newLifespanInMinutes;
+            Properties.Settings.Default.Save();
         }
     }
 }

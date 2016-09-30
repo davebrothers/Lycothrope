@@ -1,10 +1,5 @@
 ﻿namespace Lycothrope
 {
-    public enum TomatoState
-    {
-        Started, Stopped, Completed
-    }
-
     public enum Cultivar
     {
         Pomodoro, ShortBreak, LongBreak
@@ -14,6 +9,7 @@
     {
         Cultivar Cultivar();
         int Lifespan();
+        void UpdateDefaultCultivarLifespan(Cultivar cultivar, int newLifespanInMinutes);
     }
 }
 
