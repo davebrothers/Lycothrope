@@ -45,6 +45,11 @@
             Properties.Settings.Default[cultivar.ToString()] = newLifespanInMinutes;
             Properties.Settings.Default.Save();
         }
+
+        public int GetDefaultLifespanFor(Cultivar cultivar)
+        {
+            return (int) Properties.Settings.Default[cultivar.ToString()];
+        }
     }
 }
 

@@ -96,11 +96,21 @@ namespace Lycothrope.Tests
         public void SettingsUpdater_ChangesDefaultTomatoTypeValues()
         {
             var pomodoroDefault = Properties.Settings.Default.Pomodoro;
-            var tomato = new Tomato(Cultivar.Pomodoro);
+            var tomato = new Tomato();
 
             tomato.UpdateDefaultCultivarLifespan(Cultivar.Pomodoro, 10);
 
             Assert.That(pomodoroDefault, Is.Not.EqualTo(Properties.Settings.Default.Pomodoro));
+        }
+
+        [Test]
+        public void SettingsFetcher_ReturnsDefaultTomtoTimeValueAsInt()
+        {
+            var tomato = new Tomato();
+            var tomatoDefault = tomato.GetDefaultLifespanFor(Cultivar.Pomodoro);
+
+            Assert.That(tomatoDefault, Is.EqualTo(Properties.Settings.Default.Pomodoro));
+
         }
     }
 }
