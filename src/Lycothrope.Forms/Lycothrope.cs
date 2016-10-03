@@ -17,6 +17,7 @@ namespace Lycothrope.Forms
 
         private void Lycothrope_Load(object sender, EventArgs e)
         {
+            _tomato = new Tomato();
             ToggleStopButton();
             toolStripStatusLabel.Spring = true;
             toolStripStatusLabel.Text = @"";
@@ -76,6 +77,11 @@ namespace Lycothrope.Forms
             };
         }
 
+        private void OnLifespanUpdated(object o, LycothropeEventArgs e)
+        {
+            toolStripStatusLabel.Text = e.Message;
+        }
+
         private void OnTomatoCanceled(object o, LycothropeEventArgs e)
         {
             toolStripStatusLabel.Text = e.Message;
@@ -115,6 +121,12 @@ namespace Lycothrope.Forms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void changeTomatoTimesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Settings(_tomato);
+            form.ShowDialog();
         }
     }
 }

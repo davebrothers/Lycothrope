@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lycothrope));
             this.btnPomodoro = new System.Windows.Forms.Button();
             this.btnLongBreak = new System.Windows.Forms.Button();
             this.btnShortBreak = new System.Windows.Forms.Button();
@@ -140,6 +141,7 @@
             this.changeTomatoTimesToolStripMenuItem.Name = "changeTomatoTimesToolStripMenuItem";
             this.changeTomatoTimesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.changeTomatoTimesToolStripMenuItem.Text = "&Change tomato times";
+            this.changeTomatoTimesToolStripMenuItem.Click += new System.EventHandler(this.changeTomatoTimesToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -165,6 +167,7 @@
             this.Controls.Add(this.btnShortBreak);
             this.Controls.Add(this.btnLongBreak);
             this.Controls.Add(this.btnPomodoro);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Lycothrope";
             this.Text = "Lycothrope";

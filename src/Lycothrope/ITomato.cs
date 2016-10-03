@@ -10,6 +10,7 @@
         Cultivar Cultivar();
         int Lifespan();
         void UpdateDefaultCultivarLifespan(Cultivar cultivar, int newLifespanInMinutes);
+        void UpdateAllCultivarLifespans(int pomodoro, int shortBreak, int longBreak);
     }
 }
 
