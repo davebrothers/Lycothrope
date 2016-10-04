@@ -13,7 +13,10 @@ namespace Lycothrope.Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Lycothrope());
+            var form = new Lycothrope();
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MaximizeBox = false;
+            Application.Run(form);
         }
     }
 }

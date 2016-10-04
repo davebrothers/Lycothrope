@@ -126,6 +126,8 @@ namespace Lycothrope.Forms
         private void changeTomatoTimesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new Settings(_tomato);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MaximizeBox = false;
             form.ShowDialog();
         }
     }
